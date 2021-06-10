@@ -34,8 +34,8 @@
     
       <Slider fx:id="barraVolume" layoutX="126.0" layoutY="548.0" prefHeight="24.0" prefWidth="210.0" value="100.0" />
       <Label layoutX="209.0" layoutY="533.0" text="volume" />
-      <Label fx:id="lblTitulo" layoutX="66.0" layoutY="395.0" prefHeight="18.0" prefWidth="234.0" />
-      <Label fx:id="lblDuracao" layoutX="281.0" layoutY="450.0" prefHeight="18.0" prefWidth="60.0" />
-      <Label fx:id="lblTempo" layoutX="24.0" layoutY="450.0" prefHeight="18.0" prefWidth="60.0" />
+      <Label fx:id="lblTitulo" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="395.0" prefHeight="18.0" prefWidth="234.0" />
+      <Label fx:id="lblDuracao" layoutX="285.0" layoutY="455.0" prefHeight="18.0" prefWidth="60.0" />
+      <Label fx:id="lblTempo" layoutX="39.0" layoutY="455.0" prefHeight="18.0" prefWidth="60.0" />
    </children>
 </AnchorPane>
