@@ -17,7 +17,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		stage = primaryStage;
-		AnchorPane root = FXMLLoader.load(getClass().getResource("Tela2.fxml"));
+		AnchorPane root = FXMLLoader.load(getClass().getResource("TelaP.fxml"));
 	    sc = new Scene(root);
 		stage.getIcons().add(new Image("file:imagens/astronauta.jpg"));
 		stage.setScene(sc);
