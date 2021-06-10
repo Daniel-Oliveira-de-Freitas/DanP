@@ -78,10 +78,7 @@ public class MainController {
 			Temporizador();
 			volume();
 	
-		} else {
-			danp.pause();
-			cancelaBarra();
-			ok = false;
+		
 		}
 
 	}catch(NullPointerException e){
@@ -94,11 +91,16 @@ public class MainController {
 	}
 
 	public void pause() {
+		try {
 		cancelaBarra();
 		danp.pause();
+		ok =false;
+	}catch(NullPointerException e) {
+		MSA("Escolha uma música e aperte o play!");
 	}
-
+}
 	public void voltar() {
+		try {
 		if (musicaNumero > 0) {
 			musicaNumero--;
 			danp.stop();
@@ -120,9 +122,12 @@ public class MainController {
 			lblNmusica.setText(musica.get(musicaNumero).getName());
 			play();
 		}
+	}catch(NullPointerException e) {
+		MSA("Não há músicas para voltar ");
 	}
-
+	}
 	public void avancar() {
+		try {
 		if (musicaNumero < musica.size() - 1) {
 			musicaNumero++;
 			danp.stop();
@@ -141,8 +146,10 @@ public class MainController {
 			lblNmusica.setText(musica.get(musicaNumero).getName());
 			play();
 		}
+	}catch(NullPointerException e) {
+		MSA("Não há músicas para avançar");
 	}
-
+	}
 	public void volume() {
 		barraVolume.valueProperty().addListener(new javafx.beans.value.ChangeListener<Number>() {
 
@@ -152,6 +159,8 @@ public class MainController {
 			}
 		});
 		barra.setStyle("-fx-accent: #00FF00;");
+		
+		
 	
 	}
 

@@ -32,7 +32,7 @@
          </font>
       </Label>
     
-      <Slider fx:id="barraVolume" layoutX="126.0" layoutY="548.0" max="200.0" prefHeight="24.0" prefWidth="210.0" value="100.0" />
+      <Slider fx:id="barraVolume" layoutX="126.0" layoutY="548.0" prefHeight="24.0" prefWidth="210.0" value="100.0" />
       <Label layoutX="209.0" layoutY="533.0" text="volume" />
       <Label fx:id="lblTitulo" layoutX="66.0" layoutY="395.0" prefHeight="18.0" prefWidth="234.0" />
       <Label fx:id="lblDuracao" layoutX="281.0" layoutY="450.0" prefHeight="18.0" prefWidth="60.0" />
