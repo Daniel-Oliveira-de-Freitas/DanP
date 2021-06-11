@@ -1,1 +1,1 @@
-java --module-path "C:\Program Files\Java\javafx-sdk-16\lib" --add-modules javafx.controls,javafx.fxml,javafx.media -jar F:\DanP\DanP.jar
+java --module-path "F:\Apps\javafx-sdk-16\lib" --add-modules javafx.controls,javafx.fxml,javafx.media -jar F:\Apps\DanP\Danp.jar

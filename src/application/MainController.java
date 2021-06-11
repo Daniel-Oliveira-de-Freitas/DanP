@@ -1,6 +1,9 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -9,13 +12,18 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
@@ -25,16 +33,18 @@ public class MainController {
 	@FXML
 	private AnchorPane anchorPane;
 	@FXML
+	private Pane pane;
+	@FXML
 	private Slider barra;
 	@FXML
 	private Slider barraVolume;
-	@FXML
+    @FXML
+    private ListView <File> listaMusica;
+	@FXML    
 	private Label lblNmusica, lblTitulo,lblTempo, lblDuracao;
 	@FXML
 	private Button btnPlay, btnPause, btnAvancar, btnVoltar;
 	private Duration resumePlayer;
-	private File directory;
-	private File[] files;
 	private ArrayList<File> musica;
 	private Timer timer;
 	private MediaPlayer danp;
@@ -42,6 +52,8 @@ public class MainController {
 	private boolean ok = false;
 	private static String CaminhoMusica;
 	int musicaNumero;
+
+	
 	
 
 	public void EscolhaCaminho() {
@@ -50,6 +62,8 @@ public class MainController {
 			fc.setTitle("Escolha uma musica");
 			fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MP3", "*.mp3*"));
 			File file = fc.showOpenDialog(null);
+			
+			
 
 		if (file != null) {
 			lblTitulo.setText(file.getName().replace("MP3", "*.mp3*"));
@@ -64,7 +78,17 @@ public class MainController {
 			MSA("Arquivo Invalido");
 		}
 	}
-
+	
+	public void acaoPlayList() {
+		
+		pane.setVisible(true);
+	
+}
+	
+	public void fechaLista() {
+		pane.setVisible(false);
+	}
+	
 	public void play() {
 		try {
 		if (ok == false) {
@@ -274,5 +298,6 @@ public class MainController {
 			EscolhaCaminho();
 		}
 	}
-
+	
+	
 }
