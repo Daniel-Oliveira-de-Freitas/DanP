@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="96.0" layoutY="61.0">
          <image>
-            <Image url="file:///C:/Users/danie/eclipse-workspace/Danp/imagens/astronauta.jpg" />
+            <Image url="file:///C:/Apps/DanP/imagens/astronauta.jpg" />
          </image>
       </ImageView>
       <Slider fx:id="barra" layoutX="26.0" layoutY="432.0" prefHeight="24.0" prefWidth="321.0" style="-fx-background-color: #3AAAFE;" />
@@ -34,7 +34,7 @@
       <Label fx:id="lblTitulo" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="409.0" prefHeight="18.0" prefWidth="321.0" />
       <Label fx:id="lblDuracao" alignment="CENTER_RIGHT" layoutX="281.0" layoutY="455.0" prefHeight="18.0" prefWidth="60.0" />
       <Label fx:id="lblTempo" layoutX="34.0" layoutY="455.0" prefHeight="18.0" prefWidth="60.0" />
-      <Button layoutX="124.0" layoutY="533.0" mnemonicParsing="false" onAction="#acaoPlayList" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #2169F3;" text="Play List" textFill="WHITE" />
+      <Button layoutX="124.0" layoutY="533.0" mnemonicParsing="false" onAction="#inicialize" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #2169F3;" text="Play List" textFill="WHITE" />
       <Label layoutX="139.0" layoutY="22.0" prefHeight="60.0" prefWidth="113.0" text="DanP" textFill="WHITE">
          <font>
             <Font name="EngraversGothic BT" size="48.0" />
@@ -43,13 +43,14 @@
       <Pane fx:id="pane" layoutX="31.0" layoutY="301.0" prefHeight="93.0" prefWidth="321.0" style="-fx-background-color: Black;" visible="false">
          <children>
             <ListView fx:id="listaMusica" layoutY="24.0" prefHeight="70.0" prefWidth="321.0" />
-            <Label layoutX="94.0" layoutY="2.0" text="Lista de Musicas" textFill="#3aaafe">
+            <Label layoutX="95.0" layoutY="2.0" text="Lista de Musicas" textFill="#3aaafe">
                <font>
                   <Font name="Bodoni Bd BT Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="300.0" mnemonicParsing="false" onAction="#fechaLista" prefHeight="8.0" prefWidth="5.0" text="x" />
          </children>
       </Pane>
+      <Button layoutX="50.0" layoutY="576.0" mnemonicParsing="false" onAction="#acaoPlayList" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #2169F3;" text="Ex List" textFill="WHITE" />
+      <Button layoutX="124.0" layoutY="577.0" mnemonicParsing="false" onAction="#fechaLista" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #2169F3;" text="Cl List" textFill="WHITE" />
    </children>
 </AnchorPane>

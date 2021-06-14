@@ -1,9 +1,6 @@
 package application;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -12,8 +9,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -21,13 +16,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
+import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ProgressBar;
 
 public class MainController {
 	@FXML
@@ -46,6 +45,8 @@ public class MainController {
 	private Button btnPlay, btnPause, btnAvancar, btnVoltar;
 	private Duration resumePlayer;
 	private ArrayList<File> musica;
+	private File directory;
+	private File[] files;
 	private Timer timer;
 	private MediaPlayer danp;
 	private Media mp;
@@ -53,8 +54,24 @@ public class MainController {
 	private static String CaminhoMusica;
 	int musicaNumero;
 
-	
-	
+	//@Override
+	public void inicialize() {		
+		musica = new ArrayList<File>();		
+		directory = new File("music");		
+		files = directory.listFiles();		
+		if(files != null) {			
+			for(File file : files) {				
+				musica.add(file);
+			
+			}
+		}
+		
+		mp = new Media(musica.get(musicaNumero).toURI().toString());
+		danp = new MediaPlayer(mp);		
+		lblTitulo.setText(musica.get(musicaNumero).getName());
+		play();
+		//DuracaoTotal();
+	}
 
 	public void EscolhaCaminho() {
 		try {
@@ -63,14 +80,16 @@ public class MainController {
 			fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MP3", "*.mp3*"));
 			File file = fc.showOpenDialog(null);
 			
-			
-
 		if (file != null) {
 			lblTitulo.setText(file.getName().replace("MP3", "*.mp3*"));
 			CaminhoMusica = file.getAbsolutePath();
+			mp = new Media(Paths.get(CaminhoMusica).toUri().toString());
+			danp = new MediaPlayer(mp);
 			play();
-			BarraAvancar();
-			DuracaoTotal();
+			//BarraAvancar();
+		   
+			//DuracaoTotal();
+			
 		} 
 		}catch(NullPointerException e) {
 		
@@ -92,16 +111,16 @@ public class MainController {
 	public void play() {
 		try {
 		if (ok == false) {
-			mp = new Media(Paths.get(CaminhoMusica).toUri().toString());
-			danp = new MediaPlayer(mp);
+			
 			danp.play();
 			ok = true;
 			retorna();
 			BarraAvancar();
 			reloop();
+			DuracaoTotal();
 			Temporizador();
 			volume();
-	
+			
 		
 		}
 
@@ -133,7 +152,7 @@ public class MainController {
 			}
 			mp = new Media(musica.get(musicaNumero).toURI().toString());
 			danp = new MediaPlayer(mp);
-			lblNmusica.setText(musica.get(musicaNumero).getName());
+			lblTitulo.setText(musica.get(musicaNumero).getName());
 			play();
 		} else {
 			musicaNumero = musica.size() - 1;
@@ -143,7 +162,7 @@ public class MainController {
 			}
 			mp = new Media(musica.get(musicaNumero).toURI().toString());
 			danp = new MediaPlayer(mp);
-			lblNmusica.setText(musica.get(musicaNumero).getName());
+			lblTitulo.setText(musica.get(musicaNumero).getName());
 			play();
 		}
 	}catch(NullPointerException e) {
@@ -160,14 +179,14 @@ public class MainController {
 			}
 			mp = new Media(musica.get(musicaNumero).toURI().toString());
 			danp = new MediaPlayer(mp);
-			lblNmusica.setText(musica.get(musicaNumero).getName());
+			lblTitulo.setText(musica.get(musicaNumero).getName());
 			play();
 		} else {
 			musicaNumero = 0;
 			danp.stop();
 			mp = new Media(musica.get(musicaNumero).toURI().toString());
 			danp = new MediaPlayer(mp);
-			lblNmusica.setText(musica.get(musicaNumero).getName());
+			lblTitulo.setText(musica.get(musicaNumero).getName());
 			play();
 		}
 	}catch(NullPointerException e) {
